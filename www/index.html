@@ -29,29 +29,34 @@
          <script type="text/javascript">
       <!--
       function Calcular() {
-
         resultado = "";
-
-        for (i = 1; i <= 10000; i++) {
-          soma = 0;
-          for (j = 1; j <= Math.floor(i/2); j++) {
-            if (i % j == 0) {  // Possível divisor >> divisor
-              soma += j;
+        soma = 0;
+        hr_inicial = new Date();
+        for (i = 1; i <= 50000; i++) {
+          cont = 0;
+          for (j = 1; j <= i; j++) {
+            if (i % j == 0) { 
+              cont += 1;
             }
           }
-          if (soma == i) {
-            resultado += i + ", ";
+          
+          if (cont <= 2) {
+            soma += i;
           }
         }
-        alert(resultado);
-        return false;        
-      } 
-      //-->
+        intervalo = 0;
+        hr_final = new Date();
+        intervalo = hr_final - hr_inicial;
+        intervalo = intervalo / 1000;
+        alert("A soma dos numros primos no intervalo de 1 a 10 eh: "+soma+" e o tempo de execução foi: "+intervalo);
+
+        return false;  
+    }
     </script>
     </head>
     <body>
-        Numeros Perfeitos...<br>
-        Resultados: <script> Calcular(); </script>
+        Numeros Primos...<br>
+        <script> Calcular(); </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
